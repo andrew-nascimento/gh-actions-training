@@ -1,0 +1,9 @@
+name: blank
+
+on: [workflow_dispatch]
+jobs:
+  blank_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: "echo hello world"
