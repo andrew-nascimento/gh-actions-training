@@ -1,0 +1,20 @@
+name: hello-world-docker-ci
+on:
+  push:
+    paths:
+      - 'hello-world-docker/**'
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: run custom action
+        uses: ./hello-world-docker
+        with:
+          who-to-greet: '@andrew'
+      - name: output time set in container
+        run: echo "The time was ${{ steps.hello-action.outputs.time }} when the action said hello"
+
